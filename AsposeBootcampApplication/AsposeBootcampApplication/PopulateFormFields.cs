@@ -1,15 +1,8 @@
 ﻿using Aspose.Pdf.Cloud.Sdk.Api;
 using Aspose.Pdf.Cloud.Sdk.Model;
 using Aspose.Storage.Cloud.Sdk.Api;
-using Aspose.Storage.Cloud.Sdk.Model.Requests;
-using iTextSharp.text.pdf;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AsposeBootcampApplication
 {
@@ -23,11 +16,12 @@ namespace AsposeBootcampApplication
             _appKey = ConfigurationManager.AppSettings["APP_KEY"];
             _appSID = ConfigurationManager.AppSettings["APP_SID"];
         }
+
         public string Populate(string fileName)
         {
             var target = new PdfApi(_appKey, _appSID);
             var storageApi = new StorageApi(_appKey, _appSID);
-            
+
             Fields body = new Fields
             {
                 List = new List<Field>
@@ -114,7 +108,7 @@ namespace AsposeBootcampApplication
             {
                 Fields field = apiResponse.Fields;
             }
-          return apiResponse.Status;  
+            return apiResponse.Status;
         }
     }
 }
