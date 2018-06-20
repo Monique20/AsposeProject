@@ -41,7 +41,7 @@ namespace AsposeBootcampApplication.Tests
         }
 
         [Test]
-        public void GivenRecords_ShouldSetFieldsToReadOnlyAndReturnResponse200()
+        public void GivenRecords_ShouldSaveANewFileWithReadOnlyFieldsAndReturnResponse200()
         {
             //Arrange
             string populatedFile = "AsposeBootcampFormPopulated.pdf";

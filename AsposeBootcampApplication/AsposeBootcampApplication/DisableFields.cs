@@ -5,11 +5,11 @@ namespace AsposeBootcampApplication
 {
     public class DisableFields
     {
-        public void Disable(string populatedFilePath, string readOnlyFile)
+        public void Disable(string populatedFilePath, string readOnlyFilePath)
         {
             PdfReader reader = new PdfReader(populatedFilePath);
 
-            using (PdfStamper stamper = new PdfStamper(reader, new FileStream(readOnlyFile, FileMode.Create)))
+            using (PdfStamper stamper = new PdfStamper(reader, new FileStream(readOnlyFilePath, FileMode.Create)))
             {
                 AcroFields fields = stamper.AcroFields;
 
