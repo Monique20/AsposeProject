@@ -22,7 +22,20 @@ namespace AsposeBootcampApplication
             var target = new PdfApi(_appKey, _appSID);
             var storageApi = new StorageApi(_appKey, _appSID);
 
-            Fields body = new Fields
+            Fields body = GetFieldDataList();
+
+            FieldsResponse apiResponse = target.PutUpdateFields(fileName, body);
+
+            if (apiResponse != null && apiResponse.Status.Equals("OK"))
+            {
+                Fields field = apiResponse.Fields;
+            }
+            return apiResponse.Status;
+        }
+
+        private static Fields GetFieldDataList()
+        {
+            return new Fields
             {
                 List = new List<Field>
                 {
@@ -100,15 +113,6 @@ namespace AsposeBootcampApplication
                     }
                 }
             };
-
-
-            FieldsResponse apiResponse = target.PutUpdateFields(fileName, body);
-
-            if (apiResponse != null && apiResponse.Status.Equals("OK"))
-            {
-                Fields field = apiResponse.Fields;
-            }
-            return apiResponse.Status;
         }
     }
 }

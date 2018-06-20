@@ -15,7 +15,6 @@ namespace AsposeBootcampApplication.Tests
 
             var baseDirectory = TestContext.CurrentContext.TestDirectory;
             var pdfPath = Path.Combine(baseDirectory, name);
-
             UploadPdfFile sut = new UploadPdfFile();
 
             //Act
@@ -45,15 +44,22 @@ namespace AsposeBootcampApplication.Tests
         public void GivenRecords_ShouldSetFieldsToReadOnlyAndReturnResponse200()
         {
             //Arrange
-            string populatedFile = @"C:\Users\moniqueg\Desktop\src\AsposeBootcampFormPopulated.pdf";
-            string readOnlyFile = @"C:\Users\moniqueg\Desktop\src\AsposeBootcampFormReadOnly.pdf";
-            DisableFields sut = new DisableFields();
+            string populatedFile = "AsposeBootcampFormPopulated.pdf";
+            string readOnlyFile = "AsposeBootcampFormReadOnly.pdf";
+            var sut = new DisableFields();
+
+            var baseDirectory = TestContext.CurrentContext.TestDirectory;
+            var populatedFilePath = Path.Combine(baseDirectory, populatedFile);
+            var readOnlyFilePath = Path.Combine(baseDirectory, readOnlyFile);
 
             //Act
-            var actual = sut.Disable(populatedFile, readOnlyFile);
+            sut.Disable(populatedFilePath, readOnlyFilePath);
 
             //Assert
-            Assert.AreEqual(readOnlyFile, actual);
+            var populatedFileByteSize = File.ReadAllBytes(populatedFilePath);
+            var readonlyFileByteSize = File.ReadAllBytes(readOnlyFilePath);
+            Assert.AreNotEqual(populatedFileByteSize, readonlyFileByteSize);
+
         }
 
 

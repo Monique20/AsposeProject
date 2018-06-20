@@ -5,9 +5,9 @@ namespace AsposeBootcampApplication
 {
     public class DisableFields
     {
-        public string Disable(string populatedFile, string readOnlyFile)
+        public void Disable(string populatedFilePath, string readOnlyFile)
         {
-            PdfReader reader = new PdfReader(populatedFile);
+            PdfReader reader = new PdfReader(populatedFilePath);
 
             using (PdfStamper stamper = new PdfStamper(reader, new FileStream(readOnlyFile, FileMode.Create)))
             {
@@ -19,7 +19,7 @@ namespace AsposeBootcampApplication
 
                 stamper.Close();
             }
-            return readOnlyFile;
+            
         }
     }
 }
