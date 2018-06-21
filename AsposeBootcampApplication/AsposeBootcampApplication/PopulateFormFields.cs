@@ -29,8 +29,11 @@ namespace AsposeBootcampApplication
             if (apiResponse != null && apiResponse.Status.Equals("OK"))
             {
                 Fields field = apiResponse.Fields;
+
             }
+
             return apiResponse.Status;
+
         }
 
         private static Fields GetFieldDataList()
