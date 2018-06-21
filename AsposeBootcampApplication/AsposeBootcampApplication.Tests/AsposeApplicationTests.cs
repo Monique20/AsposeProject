@@ -29,7 +29,7 @@ namespace AsposeBootcampApplication.Tests
         public void GivenRecords_ShouldPopulateFieldsAndReturnResponse200()
         {
             //Arrange
-            var fileName = "AsposeBootcampForm.pdf";
+            var fileName = "AsposeBootcampForm1.pdf";
             PopulateFormFields sut = new PopulateFormFields();
 
             //Act
